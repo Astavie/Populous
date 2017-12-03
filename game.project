@@ -1,9 +1,11 @@
 [project]
-title = My project
+title = Populous
 version = 0.1
+custom_resources = main/data/
 
 [bootstrap]
 main_collection = /main/main.collectionc
+render = /builtins/render/default.renderc
 
 [input]
 game_binding = /input/game.input_bindingc
@@ -18,4 +20,10 @@ scale = 0.02
 
 [script]
 shared_state = 1
+
+[label]
+max_count = 64
+
+[sprite]
+max_count = 1024
 

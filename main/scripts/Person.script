@@ -1,0 +1,26 @@
+function init(self)
+	self.dir = (math.random(0, 1) - 0.5) * 2;
+	self.angle = math.random() * math.pi * 2;
+	self.speed = math.random() + 0.5;
+	self.height = math.random() * 8 + 8;
+	self.jump = false;
+end
+
+function update(self, dt)
+	self.angle = (self.angle + self.dir * self.speed * dt) % (math.pi * 2);
+	local rotation = vmath.quat_rotation_z(self.angle);
+	local tmp = math.abs(math.sin(self.angle * 6));
+	if tmp > 0.6 then
+		self.jump = false;
+	elseif tmp < 0.4 and not self.jump then
+		self.jump = true;
+		msg.post("#jump", "play_sound");
+	end
+	local jump = vmath.rotate(rotation, vmath.vector3(0, tmp * self.height, 0));
+	go.set_position(vmath.vector3(640, 360, 0) + jump)
+	go.set_rotation(rotation);
+	if people > math.ceil(population * 2) or population < 0.01 then
+		people = people - 1;
+		go.delete();
+	end
+end

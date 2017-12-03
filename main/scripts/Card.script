@@ -1,0 +1,127 @@
+go.property("card", 0);
+go.property("hand", true);
+
+local function tick(self)
+	local turns = ' turns';
+	if self.duration == 1 then
+		turns = ' turn';
+	end
+	label.set_text('#instant', self.duration .. turns);
+end
+
+function init(self)
+	msg.post(".", "acquire_input_focus");
+	self.status = 0;
+	self.pos = go.get_position();
+	table.insert(hand, msg.url());
+	cardtable[go.get_id()] = self.card;
+	self.duration = json[self.card].duration;
+	if json[self.card].duration > 0 then
+		tick(self);
+	end
+	label.set_text('#name', json[self.card].name);
+	go.set('#name', 'scale', vmath.vector3(math.min(13 / string.len(json[self.card].name), 1.3), 1.3, 1));
+	label.set_text('#influence', json[self.card].influence);
+	local string = '';
+	for i, effect in ipairs(json[self.card].effects) do
+		if effect.resource == 'population' then
+			string = string .. 'Population';
+		elseif effect.resource == 'food' then
+			string = string .. 'Food';
+		elseif effect.resource == 'co2' then
+			string = string .. 'CO2';
+		elseif effect.resource == 'technology' then
+			string = string .. 'Technology';
+		elseif effect.resource == 'influence' then
+			string = string .. 'Influence';
+		end
+		if not (effect.factor == nil) then
+			string = string .. '\n x ' .. effect.factor;
+		end
+		if not (effect.add == nil) then
+			if effect.add > 0 then
+				string = string .. '\n + ' .. effect.add;
+			else
+				string = string .. '\n - ' .. -effect.add;
+			end
+		end
+		string = string .. '\n';
+	end
+	label.set_text('#description', string);
+end
+
+function update(self, dt)
+	if self.hand then
+		if influence - used < json[self.card].influence then
+			go.set('#mask', 'tint', vmath.vector4(1, 1, 1, 0.75));
+		else
+			go.set('#mask', 'tint', vmath.vector4(1, 1, 1, 0));
+		end
+		local change;
+		if influence - used >= json[self.card].influence and x > self.pos.x - 60 and x < self.pos.x + 60 and y > self.pos.y - 100 and y < self.pos.y + 100 then
+			change = 1 - self.status;
+		else
+			change = -self.status;
+		end
+		self.status = self.status + change * dt * 8;
+		go.set_position(vmath.vector3(self.pos.x, self.pos.y + self.status * 25, self.pos.z))
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash('tick') and not self.hand then
+		self.duration = self.duration - 1;
+		if self.duration < 1 then
+			go.delete();
+		else			
+			tick(self);
+		end
+	end
+end
+
+function on_input(self, action_id, action)
+	if action_id == hash('click') and action.pressed and self.hand then
+		if action.x > self.pos.x - 60 and action.x < self.pos.x + 60 and action.y > self.pos.y - 100 and action.y < self.pos.y + 100 then
+			if influence - used >= json[self.card].influence then
+				if json[self.card].duration < 1 then
+					msg.post("/game#correct", "play_sound");
+					used = used + json[self.card].influence;
+					for i, effect in ipairs(json[self.card].effects) do
+						local add = effect.add;
+						if add == nil then
+							add = 0;
+						end
+						local factor = effect.factor;
+						if factor == nil then
+							factor = 1;
+						end
+						if effect.resource == 'population' then
+							population = population * factor + add;
+						elseif effect.resource == 'food' then
+							food = food * factor + add;
+						elseif effect.resource == 'co2' then
+							co2 = co2 * factor + add;
+						elseif effect.resource == 'technology' then
+							technology = technology * factor + add;
+						elseif effect.resource == 'influence' then
+							influence = influence * factor + add;
+						end
+					end
+					go.delete();
+					return;
+				else
+					for i = 1,10,1 do
+						if active[i] == nil then
+							msg.post("/game#correct", "play_sound");
+							used = used + json[self.card].influence;
+							self.hand = false;
+							active[i] = go.get_id();
+							return;
+						end
+					end
+				end
+			end
+			msg.post("/game#cancel", "play_sound");
+		end
+	end
+end

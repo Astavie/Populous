@@ -1,0 +1,424 @@
+[
+	{
+		"name": "One Child Policy",
+		"technology": 4,
+		"rareness": 2,
+		"influence": 4,
+		"duration": 10,
+		"effects": [
+			{
+				"resource": "population",
+				"factor": 0.1
+			},
+			{
+				"resource": "technology",
+				"add": -0.01
+			}
+		]
+	},
+	{
+		"name": "Subsidiarity",
+		"technology": 4,
+		"rareness": 2,
+		"influence": 1,
+		"duration": 5,
+		"effects": [
+			{
+				"resource": "influence",
+				"factor": 0.5
+			},
+			{
+				"resource": "co2",
+				"factor": 0.2
+			}
+		]
+	},
+	{
+		"name": "Irrigation",
+		"technology": 2,
+		"rareness": 1,
+		"influence": 2,
+		"duration": 5,
+		"effects": [
+			{
+				"resource": "co2",
+				"factor": 1.1
+			},
+			{
+				"resource": "food",
+				"factor": 1.1
+			}
+		]
+	},
+	{
+		"name": "Factory",
+		"technology": 3,
+		"rareness": 2,
+		"influence": 4,
+		"duration": 10,
+		"effects": [
+			{
+				"resource": "co2",
+				"add": 1000
+			},
+			{
+				"resource": "food",
+				"add": 5
+			}
+		]
+	},
+	{
+		"name": "Geothermal Energy",
+		"technology": 2,
+		"rareness": 2,
+		"influence": 2,
+		"duration": 2,
+		"effects": [
+			{
+				"resource": "co2",
+				"factor": 0.5
+			},
+			{
+				"resource": "technology",
+				"add": 0.1
+			}
+		]
+	},
+	{
+		"name": "Nuclear Energy",
+		"technology": 3,
+		"rareness": 3,
+		"influence": 4,
+		"duration": 5,
+		"effects": [
+			{
+				"resource": "co2",
+				"factor": 0.1
+			},
+			{
+				"resource": "population",
+				"add": -0.1
+			},
+			{
+				"resource": "technology",
+				"add": 0.1
+			}
+		]
+	},
+	{
+		"name": "Diplomacy",
+		"technology": 3,
+		"rareness": 3,
+		"influence": 2,
+		"duration": 5,
+		"effects": [
+			{
+				"resource": "influence",
+				"add": 2
+			}
+		]
+	},
+	{
+		"name": "Campaign",
+		"technology": 4,
+		"rareness": 1,
+		"influence": 2,
+		"duration": 2,
+		"effects": [
+			{
+				"resource": "co2",
+				"factor": 1.1
+			},
+			{
+				"resource": "influence",
+				"add": 2
+			}
+		]
+	},
+	{
+		"name": "Religion",
+		"technology": 2,
+		"rareness": 2,
+		"influence": 2,
+		"duration": 5,
+		"effects": [
+			{
+				"resource": "influence",
+				"add": 1
+			},
+			{
+				"resource": "population",
+				"factor": 0.5
+			}
+		]
+	}
+	{
+		"name": "Solar Farms",
+		"technology": 3,
+		"rareness": 2,
+		"influence": 3,
+		"duration": 2,
+		"effects": [
+			{
+				"resource": "co2",
+				"factor": 0.2
+			}
+		]
+	},
+	{
+		"name": "Edible CO2",
+		"technology": 3,
+		"rareness": 2,
+		"influence": 4,
+		"duration": 0,
+		"effects": [
+			{
+				"resource": "co2",
+				"factor": 0.9
+			},
+			{
+				"resource": "food",
+				"factor": 1.1
+			}
+		]
+	},
+	{
+		"name": "Terraforming",
+		"technology": 4,
+		"rareness": 3,
+		"influence": 4,
+		"duration": 0,
+		"effects": [
+			{
+				"resource": "population",
+				"add": 2
+			},
+			{
+				"resource": "co2",
+				"factor": 0.5
+			}
+		]
+	},
+	{
+		"name": "Greenhouses",
+		"technology": 4,
+		"rareness": 3,
+		"influence": 4,
+		"duration": 5,
+		"effects": [
+			{
+				"resource": "co2",
+				"add": -5000
+			}
+		]
+	},
+	{
+		"name": "Offering",
+		"technology": 2,
+		"rareness": 2,
+		"influence": 2,
+		"duration": 0,
+		"effects": [
+			{
+				"resource": "population",
+				"add": -0.5
+			},
+			{
+				"resource": "food",
+				"add": -0.1
+			}
+		]
+	},
+	{
+		"name": "Deforestation",
+		"technology": 1,
+		"rareness": 1,
+		"influence": 1,
+		"duration": 5,
+		"effects": [
+			{
+				"resource": "co2",
+				"add": 200
+			},
+			{
+				"resource": "food",
+				"add": 0.1
+			}
+		]
+	},
+	{
+		"name": "Gathering",
+		"technology": 1,
+		"rareness": 1,
+		"influence": 1,
+		"duration": 0,
+		"effects": [
+			{
+				"resource": "food",
+				"add": 0.1
+			}
+		]
+	},
+	{
+		"name": "Speech",
+		"technology": 1,
+		"rareness": 2,
+		"influence": 1,
+		"duration": 1,
+		"effects": [
+			{
+				"resource": "influence",
+				"add": 1
+			},
+			{
+				"resource": "technology",
+				"add": 0.1
+			}
+		]
+	},
+	{
+		"name": "Agriculture",
+		"technology": 1,
+		"rareness": 2,
+		"influence": 1,
+		"duration": 0,
+		"effects": [
+			{
+				"resource": "food",
+				"add": 0.1
+			},
+			{
+				"resource": "technology",
+				"add": 0.1
+			}
+		]
+	},
+	{
+		"name": "Fasting",
+		"technology": 1,
+		"rareness": 2,
+		"influence": 1,
+		"duration": 3,
+		"effects": [
+			{
+				"resource": "food",
+				"add": 0.1
+			},
+			{
+				"resource": "population",
+				"add": -0.05
+			}
+		]
+	},
+	{
+		"name": "Hunt",
+		"technology": 2,
+		"rareness": 2,
+		"influence": 2,
+		"duration": 0,
+		"effects": [
+			{
+				"resource": "population",
+				"add": -0.1
+			},
+			{
+				"resource": "food",
+				"add": 0.3
+			}
+		]
+	},
+	{
+		"name": "Invention",
+		"technology": 3,
+		"rareness": 2,
+		"influence": 3,
+		"duration": 0,
+		"effects": [
+			{
+				"resource": "food",
+				"add": -0.2
+			},
+			{
+				"resource": "technology",
+				"add": 0.2
+			}
+		]
+	},
+	{
+		"name": "Alien Trade",
+		"technology": 5,
+		"rareness": 2,
+		"influence": 6,
+		"duration": 0,
+		"effects": [
+			{
+				"resource": "food",
+				"factor": 0.1
+			},
+			{
+				"resource": "technology",
+				"add": 1
+			}
+		]
+	},
+	{
+		"name": "Designer Babies",
+		"technology": 5,
+		"rareness": 3,
+		"influence": 2,
+		"duration": 5,
+		"effects": [
+			{
+				"resource": "population",
+				"factor": 0.2
+			}
+		]
+	},
+	{
+		"name": "Green Energy",
+		"technology": 4,
+		"rareness": 3,
+		"influence": 4,
+		"duration": 10,
+		"effects": [
+			{
+				"resource": "co2",
+				"factor": 0.1
+			}
+		]
+	},
+	{
+		"name": "Cannibalism",
+		"technology": 2,
+		"rareness": 2,
+		"influence": 4,
+		"duration": 0,
+		"effects": [
+			{
+				"resource": "population",
+				"add": -0.5
+			},
+			{
+				"resource": "food",
+				"add": 0.5
+			}
+		]
+	},
+	{
+		"name": "Genocide",
+		"technology": 4,
+		"rareness": 4,
+		"influence": 6,
+		"duration": 0,
+		"effects": [
+			{
+				"resource": "population",
+				"factor": 0.1
+			},
+			{
+				"resource": "technology",
+				"add": -1
+			}
+		]
+	}
+]

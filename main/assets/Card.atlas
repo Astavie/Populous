@@ -1,0 +1,9 @@
+images {
+  image: "/assets/Card.png"
+}
+images {
+  image: "/assets/Mask.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0
