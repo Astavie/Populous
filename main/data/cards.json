@@ -106,6 +106,19 @@
 		]
 	},
 	{
+		"name": "Trees",
+		"technology": 2,
+		"rareness": 2,
+		"influence": 1,
+		"duration": 0,
+		"effects": [
+			{
+				"resource": "co2",
+				"add": -1000
+			}
+		]
+	},
+	{
 		"name": "Diplomacy",
 		"technology": 3,
 		"rareness": 3,
@@ -174,11 +187,11 @@
 		"effects": [
 			{
 				"resource": "co2",
-				"factor": 0.9
+				"factor": 0.75
 			},
 			{
 				"resource": "food",
-				"factor": 1.1
+				"factor": 1.25
 			}
 		]
 	},
@@ -208,7 +221,7 @@
 		"effects": [
 			{
 				"resource": "co2",
-				"add": -5000
+				"factor": -0.5
 			}
 		]
 	},
@@ -336,7 +349,7 @@
 		"effects": [
 			{
 				"resource": "food",
-				"add": -0.2
+				"add": -2
 			},
 			{
 				"resource": "technology",
@@ -345,15 +358,15 @@
 		]
 	},
 	{
-		"name": "Alien Trade",
+		"name": "Aliens!",
 		"technology": 5,
-		"rareness": 2,
+		"rareness": 4,
 		"influence": 6,
 		"duration": 0,
 		"effects": [
 			{
-				"resource": "food",
-				"factor": 0.1
+				"resource": "co2",
+				"factor": 0
 			},
 			{
 				"resource": "technology",
@@ -377,13 +390,13 @@
 	{
 		"name": "Green Energy",
 		"technology": 4,
-		"rareness": 3,
-		"influence": 4,
-		"duration": 10,
+		"rareness": 2,
+		"influence": 2,
+		"duration": 5,
 		"effects": [
 			{
 				"resource": "co2",
-				"factor": 0.1
+				"factor": 0.2
 			}
 		]
 	},

@@ -56,6 +56,11 @@ function update(self, dt)
 			local famine = math.max(population - food, 0);
 			local string = 'Population: ';
 			local total = (base * product + sum) * danger;
+			if famine > 0 then
+				total = total - famine;
+			else
+				total = total * (1 + (food / population - 1) / 5);
+			end
 			if total >= 0 then
 				string = string .. '+ ' .. string.format('%.2f', total);
 			else

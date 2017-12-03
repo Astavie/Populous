@@ -1,6 +1,24 @@
 images {
   image: "/assets/Earth.png"
 }
+images {
+  image: "/assets/CO2.png"
+}
+images {
+  image: "/assets/Person.png"
+}
+images {
+  image: "/assets/Card.png"
+}
+images {
+  image: "/assets/Mask.png"
+}
+images {
+  image: "/assets/GUI.png"
+}
+images {
+  image: "/assets/Infobox.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

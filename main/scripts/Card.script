@@ -48,6 +48,21 @@ function init(self)
 		string = string .. '\n';
 	end
 	label.set_text('#description', string);
+
+	local rareness = json[self.card].rareness;
+	if rareness == 1 then
+		label.set_text('#rareness', 'Common');
+		go.set('#rareness', 'color', vmath.vector4(0.5, 0.5, 0.5, 1));
+	elseif rareness == 2 then
+		label.set_text('#rareness', 'Uncommon');
+		go.set('#rareness', 'color', vmath.vector4(0.5, 0.5, 1, 1));
+	elseif rareness == 3 then
+		label.set_text('#rareness', 'Rare');
+		go.set('#rareness', 'color', vmath.vector4(0.75, 0.25, 1, 1));
+	elseif rareness == 4 then
+		label.set_text('#rareness', 'Legendary');
+		go.set('#rareness', 'color', vmath.vector4(0.95, 0.75, 0, 1));
+	end
 end
 
 function update(self, dt)
@@ -80,7 +95,7 @@ function on_message(self, message_id, message, sender)
 end
 
 function on_input(self, action_id, action)
-	if action_id == hash('click') and action.pressed and self.hand then
+	if render_gui and action_id == hash('click') and action.pressed and self.hand then
 		if action.x > self.pos.x - 60 and action.x < self.pos.x + 60 and action.y > self.pos.y - 100 and action.y < self.pos.y + 100 then
 			if influence - used >= json[self.card].influence then
 				if json[self.card].duration < 1 then

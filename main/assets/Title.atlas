@@ -1,8 +1,8 @@
 images {
-  image: "/assets/Card.png"
+  image: "/assets/Click.png"
 }
 images {
-  image: "/assets/Mask.png"
+  image: "/assets/Title.png"
 }
 margin: 0
 extrude_borders: 0

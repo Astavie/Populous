@@ -25,6 +25,8 @@ function product(resource)
 end
 
 local function tick(self)
+	go.set('/earth#CO2', 'tint', vmath.vector4(1, 1, 1, math.sqrt(co2 / 1000000)));
+
 	local factor = math.min(food / population, 1);
 	influence = (1 + math.sqrt(population * 1 * factor + population * 0.5 * (1 - factor))) * product('influence') + sum('influence');
 	if (population < 0.01) then
@@ -58,7 +60,7 @@ local function tick(self)
 		end
 	end
 
-	local count = math.ceil(math.sqrt(technology));
+	local count = math.floor(technology) + 1;
 	local spend = false;
 	for i = 1, count, 1 do
 		local card;
@@ -102,6 +104,7 @@ function init(self)
 	math.randomseed(os.time() - os.clock() * 1000);
 
 	msg.post(".", "acquire_input_focus");
+	render_gui = false;
 	people = 0;
 	population = 0.2;
 	co2 = 0;
@@ -115,6 +118,7 @@ function init(self)
 	buffer = '';
 	x = 0;
 	y = 0;
+	self.music = false;
 
 	msg.post("#sound", "play_sound");
 
@@ -136,13 +140,17 @@ function on_input(self, action_id, action)
 		x = action.x;
 		y = action.y;
 	elseif action_id == hash('click') and action.pressed then
-		if action.x > 1092.5 and action.x < 1242.5 and action.y > 37.5 and action.y < 112.5 then
+		if not render_gui then
+			go.delete('/start');
+			render_gui = true;
+		elseif action.x > 1092.5 and action.x < 1242.5 and action.y > 37.5 and action.y < 112.5 then
 			local danger = 1 - co2 / 1000000;
 			if danger > 0.99 then
 				danger = 1;
 			elseif danger < 0 then
 				danger = 0;
 			end
+			-- danger = 1;
 			co2 = math.max(co2 + population * ((technology * technology - 0.5) * 100) * product('co2') + sum('co2') - 10, 0);
 			if population >= 0.01 then
 				local tmp = food;
@@ -155,8 +163,10 @@ function on_input(self, action_id, action)
 				end
 				technology = technology + 0.01 * product('technology') + sum('technology');
 			end
-			if population < 0.01 then
-			msg.post("#sound", "stop_sound");
+			if population < 0.01 and not self.music then
+				self.music = true;
+				msg.post("#sound", "stop_sound");
+				msg.post("#sad", "play_sound");
 			end
 			used = 0;
 
